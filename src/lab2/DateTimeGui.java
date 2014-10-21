@@ -43,6 +43,7 @@ public class DateTimeGui extends javax.swing.JFrame {
         lblCalculatedDiff = new javax.swing.JLabel();
         lblNote1 = new javax.swing.JLabel();
         lblNote2 = new javax.swing.JLabel();
+        lblDiffOutput = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +84,9 @@ public class DateTimeGui extends javax.swing.JFrame {
         lblNote2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNote2.setText("The date/times are formatted \"M/d/yyyy hh:mm\"");
 
+        lblDiffOutput.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDiffOutput.setText("0 hours, 0 minutes");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,9 +109,10 @@ public class DateTimeGui extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(txtStartDate)
                                         .addComponent(txtEndDate, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                                        .addComponent(lblCalculatedDiff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addComponent(lblCalculatedDiff, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(lblDiffOutput, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
+                        .addGap(90, 90, 90)
                         .addComponent(btnCalcDifference, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
@@ -133,8 +138,10 @@ public class DateTimeGui extends javax.swing.JFrame {
                     .addComponent(lblDifference, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCalculatedDiff))
                 .addGap(18, 18, 18)
+                .addComponent(lblDiffOutput, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCalcDifference)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(38, 38, 38))
         );
 
         pack();
@@ -144,7 +151,14 @@ public class DateTimeGui extends javax.swing.JFrame {
 	// TODO add your handling code here:
 	try {
 	    String diffTime = DateTimeHelper.calculateDiffInHHMM(DATETIME_FORMAT, txtEndDate.getText(), txtStartDate.getText());
-	    
+	    String diffOutput;
+	    String[] diffSplit = diffTime.split(":");
+	    if (diffSplit.length < 2) {
+		diffOutput = "0 hours, " + diffTime + " minutes";
+	    } else {
+		diffOutput = diffSplit[0] + " hours, " + diffSplit[1] + " minutes";
+	    }
+	    lblDiffOutput.setText(diffOutput);
 	    lblCalculatedDiff.setText(diffTime);
 	    
 	} catch (IllegalArgumentException ie) {
@@ -192,6 +206,7 @@ public class DateTimeGui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcDifference;
     private javax.swing.JLabel lblCalculatedDiff;
+    private javax.swing.JLabel lblDiffOutput;
     private javax.swing.JLabel lblDifference;
     private javax.swing.JLabel lblEndDate;
     private javax.swing.JLabel lblHeading;

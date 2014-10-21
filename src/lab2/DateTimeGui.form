@@ -45,11 +45,12 @@
                                       <Component id="lblCalculatedDiff" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Component id="lblDiffOutput" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
                       <Component id="btnCalcDifference" min="-2" pref="185" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -82,8 +83,10 @@
                   <Component id="lblCalculatedDiff" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblDiffOutput" pref="26" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnCalcDifference" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -158,6 +161,12 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="The date/times are formatted &quot;M/d/yyyy hh:mm&quot;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblDiffOutput">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="text" type="java.lang.String" value="0 hours, 0 minutes"/>
       </Properties>
     </Component>
   </SubComponents>
